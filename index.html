@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Glow Up — Deja la Procrastinación Para Siempre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #f5c2cb;
+    --rose-deep: #e8a0ae;
+    --lavender: #c9b8e8;
+    --lavender-deep: #b09fd4;
+    --mauve: #9b84c4;
+    --blush: #fde8ed;
+    --cream: #fdf6f8;
+    --navy: #1a1433;
+    --charcoal: #2d2640;
+    --mid: #5a4e72;
+    --light-text: #8878a8;
+    --white: #ffffff;
+    --gradient-hero: linear-gradient(135deg, #fde8ed 0%, #ede0f5 50%, #d8cef0 100%);
+    --gradient-section: linear-gradient(160deg, #fdf0f5 0%, #f0eaf8 100%);
+    --gradient-cta: linear-gradient(135deg, #c9b8e8 0%, #e8a0ae 100%);
+    --gradient-dark: linear-gradient(135deg, #2d2640 0%, #1a1433 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--charcoal);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+
+  h1 { font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.2; }
+  h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 400; }
+
+  p { line-height: 1.75; color: var(--mid); font-weight: 300; font-size: 1.05rem; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--gradient-hero);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 0; right: 0;
+    height: 120px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .hero-orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,184,232,0.5) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    animation: float1 8s ease-in-out infinite;
+  }
+  .hero-orb-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(245,194,203,0.5) 0%, transparent 70%);
+    bottom: 0; left: -100px;
+    animation: float2 10s ease-in-out infinite;
+  }
+
+  @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,40px)} }
+  @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-30px)} }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(201,184,232,0.4);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mauve);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-badge span { width: 6px; height: 6px; background: var(--mauve); border-radius: 50%; display: inline-block; }
+
+  .hero h1 { color: var(--navy); margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--mauve); }
+  .hero p { font-size: 1.15rem; margin-bottom: 2.5rem; max-width: 480px; }
+
+  .hero-cta-group { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--gradient-cta);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 30px rgba(155,132,196,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(155,132,196,0.5); }
+
+  .btn-primary .arrow { font-size: 1.1rem; transition: transform 0.2s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .hero-note { font-size: 0.82rem; color: var(--light-text); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .book-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(90,78,114,0.18), 0 8px 20px rgba(90,78,114,0.1);
+    transform: rotate(3deg);
+    transition: transform 0.4s;
+    max-width: 300px;
+    position: relative;
+  }
+
+  .book-card:hover { transform: rotate(0deg) scale(1.02); }
+
+  .book-cover {
+    width: 120px; height: 160px;
+    background: var(--gradient-dark);
+    border-radius: 12px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(26,20,51,0.3);
+  }
+
+  .book-stars {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 20%, rgba(255,220,120,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 15%, rgba(255,220,120,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 60%, rgba(255,220,120,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 45%, rgba(255,220,120,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 15% 75%, rgba(255,220,120,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 80%, rgba(255,220,120,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 50% 30%, rgba(255,220,120,1) 0%, transparent 100%);
+  }
+
+  .book-title-visual {
+    font-family: 'Cormorant Garamond', serif;
+    color: #f0c040;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+  }
+
+  .book-card h3 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .book-card p { font-size: 0.85rem; color: var(--light-text); }
+
+  .floating-pill {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 8px 20px rgba(90,78,114,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    animation: floatPill 4s ease-in-out infinite;
+  }
+
+  .pill-1 { top: -10px; right: -20px; color: var(--mauve); animation-delay: 0s; }
+  .pill-2 { bottom: 20px; left: -30px; color: var(--rose-deep); animation-delay: 1.5s; }
+
+  @keyframes floatPill {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ── PROBLEMA ── */
+  .problema {
+    padding: 8rem 2rem;
+    background: var(--cream);
+  }
+
+  .problema-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mauve);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .section-label::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 1.4rem;
+    height: 1px;
+    background: var(--mauve);
+  }
+
+  .problema-cards { display: flex; flex-direction: column; gap: 1rem; }
+
+  .pain-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--rose);
+    box-shadow: 0 2px 12px rgba(90,78,114,0.07);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .pain-card:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(90,78,114,0.12); }
+
+  .pain-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .pain-card p { font-size: 0.95rem; margin: 0; }
+  .pain-card strong { color: var(--charcoal); font-weight: 500; }
+
+  /* ── SOLUCIÓN ── */
+  .solucion {
+    padding: 8rem 2rem;
+    background: var(--gradient-section);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .solucion::before {
+    content: 'glow up';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20vw;
+    font-weight: 300;
+    color: rgba(201,184,232,0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.1em;
+  }
+
+  .solucion-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .solucion h2 { color: var(--navy); margin-bottom: 1.5rem; }
+  .solucion > .solucion-inner > p { margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  .diferenciadores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .dif-card {
+    background: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(201,184,232,0.3);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+
+  .dif-card:hover { transform: translateY(-4px); }
+  .dif-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .dif-card h3 { font-size: 1rem; font-family: 'DM Sans', sans-serif; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+  .dif-card p { font-size: 0.88rem; }
+
+  /* ── QUÉ INCLUYE ── */
+  .incluye {
+    padding: 8rem 2rem;
+    background: var(--cream);
+  }
+
+  .incluye-inner { max-width: 1100px; margin: 0 auto; }
+
+  .incluye-header { text-align: center; margin-bottom: 4rem; }
+  .incluye-header h2 { color: var(--navy); margin-bottom: 1rem; }
+
+  .modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .modulo-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.75rem;
+    box-shadow: 0 2px 16px rgba(90,78,114,0.07);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .modulo-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(90,78,114,0.13); }
+
+  .modulo-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(201,184,232,0.35);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .modulo-card h3 { font-size: 1rem; font-family: 'DM Sans', sans-serif; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+  .modulo-card p { font-size: 0.875rem; }
+
+  .incluye-extras {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .extra-badge {
+    background: var(--gradient-section);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border: 1px solid rgba(201,184,232,0.3);
+  }
+
+  .extra-badge .e-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .extra-badge p { font-size: 0.85rem; font-weight: 500; color: var(--charcoal); margin: 0; }
+
+  /* ── BENEFICIOS ── */
+  .beneficios {
+    padding: 8rem 2rem;
+    background: var(--gradient-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .beneficios::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,184,232,0.15) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+
+  .beneficios-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .beneficios-header { text-align: center; margin-bottom: 4rem; }
+  .beneficios-header h2 { color: white; margin-bottom: 1rem; }
+  .beneficios-header p { color: rgba(255,255,255,0.6); }
+  .beneficios-header .section-label { color: var(--lavender); }
+  .beneficios-header .section-label::before { background: var(--lavender); }
+
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .beneficio-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.2s;
+  }
+
+  .beneficio-item:hover { background: rgba(255,255,255,0.09); }
+
+  .check-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(201,184,232,0.2);
+    border: 1px solid rgba(201,184,232,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--lavender);
+    font-size: 0.8rem;
+  }
+
+  .beneficio-item p { color: rgba(255,255,255,0.8); font-size: 0.95rem; margin: 0; padding-top: 0.2rem; }
+  .beneficio-item strong { color: white; }
+
+  /* ── CÓMO FUNCIONA ── */
+  .como {
+    padding: 8rem 2rem;
+    background: var(--cream);
+  }
+
+  .como-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .como h2 { color: var(--navy); margin-bottom: 1rem; }
+  .como > .como-inner > p { margin-bottom: 4rem; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(16.6% + 16px);
+    right: calc(16.6% + 16px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose), var(--lavender), var(--mauve));
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+
+  .step-circle {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 16px rgba(90,78,114,0.15);
+  }
+
+  .step:nth-child(1) .step-circle { border-color: var(--rose); color: var(--rose-deep); }
+  .step:nth-child(2) .step-circle { border-color: var(--lavender); color: var(--lavender-deep); }
+  .step:nth-child(3) .step-circle { border-color: var(--mauve); color: var(--mauve); }
+
+  .step h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+  .step p { font-size: 0.88rem; }
+
+  /* ── BONOS ── */
+  .bonos {
+    padding: 8rem 2rem;
+    background: var(--gradient-section);
+  }
+
+  .bonos-inner { max-width: 1100px; margin: 0 auto; }
+  .bonos-header { text-align: center; margin-bottom: 4rem; }
+  .bonos-header h2 { color: var(--navy); margin-bottom: 1rem; }
+
+  .bonos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  .bono-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 24px rgba(90,78,114,0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .bono-card:hover { transform: translateY(-4px); }
+
+  .bono-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .bono-card:nth-child(1)::after { background: linear-gradient(90deg, var(--rose), var(--lavender)); }
+  .bono-card:nth-child(2)::after { background: linear-gradient(90deg, var(--lavender), var(--mauve)); }
+
+  .bono-tag {
+    display: inline-block;
+    background: var(--blush);
+    color: var(--rose-deep);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+  }
+
+  .bono-card h3 { color: var(--navy); margin-bottom: 0.75rem; font-size: 1.4rem; }
+  .bono-card > p { margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+  .bono-items { display: flex; flex-direction: column; gap: 0.6rem; }
+  .bono-item { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem; color: var(--mid); }
+  .bono-item::before { content: '✦'; color: var(--mauve); flex-shrink: 0; font-size: 0.75rem; margin-top: 0.15rem; }
+
+  /* ── PARA QUIÉN ── */
+  .para-quien {
+    padding: 8rem 2rem;
+    background: var(--cream);
+  }
+
+  .para-quien-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .para-quien h2 { color: var(--navy); margin-bottom: 1.5rem; }
+  .para-quien p { margin-bottom: 2rem; }
+
+  .perfil-list { display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .perfil-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+    background: var(--gradient-section);
+    border-radius: 14px;
+    border: 1px solid rgba(201,184,232,0.25);
+    transition: border-color 0.2s;
+  }
+
+  .perfil-item:hover { border-color: var(--lavender); }
+  .perfil-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .perfil-item p { font-size: 0.92rem; margin: 0; }
+
+  .no-es-para { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(201,184,232,0.3); }
+  .no-es-para h3 { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+
+  .no-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .no-item { font-size: 0.88rem; color: var(--light-text); display: flex; gap: 0.5rem; }
+  .no-item::before { content: '×'; color: var(--rose-deep); font-weight: 600; }
+
+  .semanas-visual {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 4px 24px rgba(90,78,114,0.1);
+  }
+
+  .semanas-visual h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5rem;
+  }
+
+  .semana-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(201,184,232,0.15);
+  }
+
+  .semana-item:last-child { border-bottom: none; }
+
+  .s-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--lavender);
+    line-height: 1;
+    min-width: 28px;
+  }
+
+  .s-text { flex: 1; }
+  .s-text strong { display: block; font-size: 0.9rem; color: var(--navy); font-weight: 500; margin-bottom: 0.15rem; }
+  .s-text span { font-size: 0.8rem; color: var(--light-text); }
+
+  /* ── CTA MID ── */
+  .cta-mid {
+    padding: 6rem 2rem;
+    background: var(--gradient-cta);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-mid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .cta-mid-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+  .cta-mid h2 { color: white; margin-bottom: 1rem; }
+  .cta-mid p { color: rgba(255,255,255,0.85); margin-bottom: 2.5rem; font-size: 1.1rem; }
+
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: white;
+    color: var(--mauve);
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+
+  /* ── RESULTADOS ── */
+  .resultados {
+    padding: 8rem 2rem;
+    background: var(--gradient-section);
+  }
+
+  .resultados-inner { max-width: 1100px; margin: 0 auto; }
+  .resultados-header { text-align: center; margin-bottom: 4rem; }
+  .resultados-header h2 { color: var(--navy); margin-bottom: 1rem; }
+
+  .resultados-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .resultado-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 2px 16px rgba(90,78,114,0.07);
+    transition: transform 0.2s;
+  }
+
+  .resultado-card:hover { transform: translateY(-4px); }
+
+  .resultado-week {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--mauve);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .resultado-card h3 { font-size: 1rem; font-family: 'DM Sans', sans-serif; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; }
+  .resultado-card p { font-size: 0.88rem; }
+
+  /* ── CIERRE ── */
+  .cierre {
+    padding: 10rem 2rem;
+    background: var(--gradient-dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cierre::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,184,232,0.12) 0%, transparent 60%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cierre-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .cierre-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .cierre-quote em { color: var(--lavender); font-style: normal; }
+
+  .cierre p { color: rgba(255,255,255,0.65); margin-bottom: 3rem; font-size: 1.05rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+  .cierre-nota {
+    margin-top: 2rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #110e1e;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
+
+  footer p { font-size: 0.8rem; color: rgba(255,255,255,0.3); margin: 0; }
+
+  /* ── STICKY CTA ── */
+  .sticky-cta {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  .sticky-cta.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-visual { display: none; }
+    .problema-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .diferenciadores { grid-template-columns: 1fr; }
+    .modulos-grid { grid-template-columns: 1fr 1fr; }
+    .incluye-extras { grid-template-columns: repeat(2, 1fr); }
+    .beneficios-grid { grid-template-columns: 1fr; }
+    .steps::before { display: none; }
+    .steps { grid-template-columns: 1fr; gap: 2rem; }
+    .bonos-grid { grid-template-columns: 1fr; }
+    .para-quien-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .resultados-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .modulos-grid { grid-template-columns: 1fr; }
+    .incluye-extras { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#comprar" class="btn-primary" style="font-size:0.9rem; padding:0.75rem 1.75rem; box-shadow: 0 8px 30px rgba(155,132,196,0.5);">
+    Quiero mi Glow Up <span class="arrow">→</span>
+  </a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><span></span> Ebook + Ejercicios + Plantillas</div>
+      <h1>Deja de empezar.<br><em>Empieza a quedarte.</em></h1>
+      <p>El sistema práctico de 6 semanas para construir hábitos reales, vencer la procrastinación y transformar tu vida — incluso cuando no tienes motivación.</p>
+      <div class="hero-cta-group">
+        <a href="#comprar" class="btn-primary" id="heroCta">
+          Quiero transformar mi vida <span class="arrow">→</span>
+        </a>
+        <p class="hero-note">✦ Acceso inmediato · Descarga digital · Precio especial de lanzamiento</p>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="book-card">
+        <div class="floating-pill pill-1">✨ 9 Módulos</div>
+        <div class="floating-pill pill-2">🎁 2 Bonos gratis</div>
+        <div class="book-cover">
+          <div class="book-stars"></div>
+          <div class="book-title-visual">My<br>Glow<br>Up</div>
+        </div>
+        <h3>My Glow Up</h3>
+        <p>Tu guía completa para dejar la procrastinación</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROBLEMA ═══════════ -->
+<section class="problema">
+  <div class="problema-inner container">
+    <div class="fade-up">
+      <div class="section-label">El problema real</div>
+      <h2>¿Te suena familiar este ciclo?</h2>
+      <p style="margin-top:1rem; margin-bottom:2rem;">Arrancas con energía. Días después, la motivación desaparece. Te culpas. Esperas volver a sentirte motivada. Y el ciclo se repite.</p>
+      <p>La verdad es que <strong style="color:var(--charcoal)">no es falta de fuerza de voluntad</strong>. Es falta de sistema. Nadie te enseñó a construir hábitos que sobrevivan a los días malos.</p>
+    </div>
+    <div class="problema-cards fade-up">
+      <div class="pain-card">
+        <div class="pain-icon">🔁</div>
+        <p><strong>Empiezas con todo</strong> — ejercicio, dieta, estudiar — y a la semana ya lo abandonaste sin entender por qué.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📱</div>
+        <p><strong>"Solo 5 minutos en el celular"</strong> se convierten en 2 horas. Lo sabes. Pero no puedes parar.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😔</div>
+        <p><strong>Te dices "mañana empiezo"</strong> — pero ese mañana nunca llega, y la culpa se acumula.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⚡</div>
+        <p><strong>Dependes de la motivación</strong> para actuar. Y cuando se va, todo se detiene contigo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SOLUCIÓN ═══════════ -->
+<section class="solucion">
+  <div class="solucion-inner fade-up">
+    <div class="section-label">La solución</div>
+    <h2>Necesitas un sistema,<br>no más motivación.</h2>
+    <p>My Glow Up no es otro libro de autoayuda con frases bonitas. Es una guía práctica con ejercicios concretos, plantillas y un plan paso a paso para construir hábitos que funcionen cuando la motivación se agota.</p>
+    <div class="diferenciadores">
+      <div class="dif-card">
+        <div class="dif-icon">🧠</div>
+        <h3>Basado en psicología del comportamiento</h3>
+        <p>Entiende por qué fallan tus hábitos y cómo interrumpir el ciclo de abandono.</p>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">⚙️</div>
+        <h3>Sistema progresivo de 6 semanas</h3>
+        <p>Un hábito a la vez. Sin saturarte. Con ajustes para los días difíciles.</p>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">✍️</div>
+        <h3>Ejercicios prácticos en cada módulo</h3>
+        <p>No solo lees — aplicas. Plantillas, checklists y actividades que transforman la teoría en acción.</p>
+      </div>
+    </div>
+    <a href="#comprar" class="btn-primary">Quiero el ebook ahora <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ═══════════ QUÉ INCLUYE ═══════════ -->
+<section class="incluye">
+  <div class="incluye-inner">
+    <div class="incluye-header fade-up">
+      <div class="section-label">Contenido</div>
+      <h2>9 módulos que lo cambian todo</h2>
+      <p>Cada módulo tiene su teoría, su actividad práctica y sus plantillas listas para imprimir.</p>
+    </div>
+    <div class="modulos-grid fade-up">
+      <div class="modulo-card">
+        <div class="modulo-num">01</div>
+        <h3>El verdadero problema</h3>
+        <p>Identifica tu ciclo de abandono: emoción → acción intensa → desgaste → abandono. Aprende a interrumpirlo.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">02</div>
+        <h3>Conoce tus hábitos</h3>
+        <p>Mapea las señales invisibles que controlan tu comportamiento. Sustituye hábitos-sabotaje por positivos.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">03</div>
+        <h3>Identidad y estándar personal</h3>
+        <p>Los hábitos no nacen de la motivación, nacen de la identidad. Construye la versión de ti que ya actúa.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">04</div>
+        <h3>Sistema de hábitos simples</h3>
+        <p>Diseña hábitos tan fáciles que puedas cumplirlos incluso en tus peores días. Fácil, obvio y repetible.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">05</div>
+        <h3>Rutina Glow Up</h3>
+        <p>Una rutina mínima de alto impacto: hidratación, movimiento, nutrición y atención mental. Consistencia sobre intensidad.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">06</div>
+        <h3>Eliminar la procrastinación</h3>
+        <p>Procrastinar no es pereza: es gestión emocional. La regla de los 5 minutos y técnicas de micro-tareas que realmente funcionan.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">07</div>
+        <h3>Consistencia sin motivación</h3>
+        <p>Un plan para días difíciles definido con anticipación. Porque la consistencia se construye cuando no tienes ganas.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">08</div>
+        <h3>Tracking y progreso</h3>
+        <p>El progreso no siempre se siente, pero sí se puede ver. Sistema de seguimiento simple para mantener la constancia.</p>
+      </div>
+      <div class="modulo-card">
+        <div class="modulo-num">09</div>
+        <h3>Plan de 6 semanas</h3>
+        <p>Todo unido en un proceso progresivo: semana 1 base, semana 2 anclaje... hasta una rutina completamente estable.</p>
+      </div>
+    </div>
+    <div class="incluye-extras fade-up" style="margin-top:2rem;">
+      <div class="extra-badge">
+        <div class="e-icon">📄</div>
+        <p>8 Actividades prácticas</p>
+      </div>
+      <div class="extra-badge">
+        <div class="e-icon">🗂️</div>
+        <p>Plantillas imprimibles</p>
+      </div>
+      <div class="extra-badge">
+        <div class="e-icon">📅</div>
+        <p>Tracker semanal</p>
+      </div>
+      <div class="extra-badge">
+        <div class="e-icon">🎯</div>
+        <p>Plan de 6 semanas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BENEFICIOS ═══════════ -->
+<section class="beneficios">
+  <div class="beneficios-inner">
+    <div class="beneficios-header fade-up">
+      <div class="section-label">Resultados</div>
+      <h2>Lo que realmente lograrás</h2>
+      <p>No te prometemos una transformación mágica. Te damos las herramientas para construirla tú misma.</p>
+    </div>
+    <div class="beneficios-grid fade-up">
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Entender por qué fallabas</strong> — y dejar de culparte por ello.</p>
+      </div>
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Hábitos que se mantienen solos</strong> — porque están diseñados para funcionar sin energía extra.</p>
+      </div>
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Una identidad nueva</strong> — soy alguien que cumple lo que se propone.</p>
+      </div>
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Dominar la procrastinación</strong> — con técnicas concretas, no con fuerza de voluntad.</p>
+      </div>
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Una rutina diaria que funciona</strong> — mínima, sostenible y real.</p>
+      </div>
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Un plan para los días difíciles</strong> — definido antes de que lleguen.</p>
+      </div>
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Ver tu progreso claramente</strong> — y saber qué ajustar sin empezar de cero.</p>
+      </div>
+      <div class="beneficio-item">
+        <div class="check-icon">✓</div>
+        <p><strong>Consistencia sin depender de la motivación</strong> — el cambio más poderoso de todos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CÓMO FUNCIONA ═══════════ -->
+<section class="como">
+  <div class="como-inner fade-up">
+    <div class="section-label">El proceso</div>
+    <h2>Así funciona el sistema</h2>
+    <p>Simple. Progresivo. Diseñado para la vida real.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <h3>Lee y entiende</h3>
+        <p>Cada módulo explica el concepto en lenguaje claro. Sin relleno, directo al punto.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <h3>Aplica la actividad</h3>
+        <p>Cada módulo tiene un ejercicio práctico que convierte la teoría en acción en tu vida real.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <h3>Mantén y ajusta</h3>
+        <p>El tracker y el plan de 6 semanas te guían para sostener y mejorar semana a semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BONOS ═══════════ -->
+<section class="bonos">
+  <div class="bonos-inner">
+    <div class="bonos-header fade-up">
+      <div class="section-label">Bonus incluidos</div>
+      <h2>Dos regalos que potencian tu transformación</h2>
+      <p>Incluidos sin costo adicional con tu ebook.</p>
+    </div>
+    <div class="bonos-grid fade-up">
+      <div class="bono-card">
+        <div class="bono-tag">🎁 Bonus 1</div>
+        <h3>Reset de Dopamina</h3>
+        <p>Un plan de 3 días para reducir distracciones y recuperar tu capacidad de enfocarte. El problema no es que no puedas concentrarte — es que estás sobreestimulada.</p>
+        <div class="bono-items">
+          <div class="bono-item">Día 0: Preparación de tu entorno sin distracciones.</div>
+          <div class="bono-item">Días 1–3: Sesiones de enfoque de 25 minutos con reglas claras de pantallas.</div>
+          <div class="bono-item">Objetivo: Recuperar claridad mental sin desconectarte del mundo.</div>
+        </div>
+      </div>
+      <div class="bono-card">
+        <div class="bono-tag">🎁 Bonus 2</div>
+        <h3>Rutina de Mañana y Noche</h3>
+        <p>Dos momentos del día que lo cambian todo. Una checklist simple para empezar con intención y cerrar con claridad.</p>
+        <div class="bono-items">
+          <div class="bono-item">Mañana: Activa tu cuerpo y mente antes de revisar el celular.</div>
+          <div class="bono-item">Noche: Prepara el día siguiente para reducir la fricción matutina.</div>
+          <div class="bono-item">Formato: Checklist lista para imprimir y usar desde hoy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PARA QUIÉN ═══════════ -->
+<section class="para-quien">
+  <div class="para-quien-inner container">
+    <div class="fade-up">
+      <div class="section-label">¿Es para mí?</div>
+      <h2>Este ebook es para ti si...</h2>
+      <p>No importa tu edad, ocupación o cuántas veces hayas intentado cambiar antes.</p>
+      <div class="perfil-list">
+        <div class="perfil-item">
+          <div class="perfil-icon">🔄</div>
+          <p>Empezaste mil veces algo con motivación y lo abandonaste sin saber por qué.</p>
+        </div>
+        <div class="perfil-item">
+          <div class="perfil-icon">⏰</div>
+          <p>Sientes que el tiempo se te va pero no sabes exactamente en qué.</p>
+        </div>
+        <div class="perfil-item">
+          <div class="perfil-icon">🎯</div>
+          <p>Tienes metas claras pero no logras crear los hábitos que te llevarían ahí.</p>
+        </div>
+        <div class="perfil-item">
+          <div class="perfil-icon">📱</div>
+          <p>Sabes que el celular te roba tiempo pero no puedes evitarlo.</p>
+        </div>
+        <div class="perfil-item">
+          <div class="perfil-icon">💪</div>
+          <p>Quieres dejar de depender de la motivación y construir un sistema real.</p>
+        </div>
+      </div>
+      <div class="no-es-para">
+        <h3>No es para ti si...</h3>
+        <div class="no-list">
+          <div class="no-item">Buscas resultados sin esfuerzo ni compromiso.</div>
+          <div class="no-item">No estás dispuest@ a dedicar al menos 10 minutos al día.</div>
+          <div class="no-item">Quieres motivación temporal, no un cambio real.</div>
+        </div>
+      </div>
+    </div>
+    <div class="semanas-visual fade-up">
+      <h3>Plan de 6 semanas</h3>
+      <div class="semana-item">
+        <div class="s-num">1</div>
+        <div class="s-text">
+          <strong>Base</strong>
+          <span>Define tu identidad y tu primer hábito no negociable.</span>
+        </div>
+      </div>
+      <div class="semana-item">
+        <div class="s-num">2</div>
+        <div class="s-text">
+          <strong>Anclaje</strong>
+          <span>Añade un hábito con la regla de 5 minutos. Empieza el tracker.</span>
+        </div>
+      </div>
+      <div class="semana-item">
+        <div class="s-num">3</div>
+        <div class="s-text">
+          <strong>Reforzamiento</strong>
+          <span>Integra rutina básica y tu plan para días difíciles.</span>
+        </div>
+      </div>
+      <div class="semana-item">
+        <div class="s-num">4</div>
+        <div class="s-text">
+          <strong>Expansión</strong>
+          <span>Tercer hábito. Simplifica tu entorno para reducir fricción.</span>
+        </div>
+      </div>
+      <div class="semana-item">
+        <div class="s-num">5</div>
+        <div class="s-text">
+          <strong>Automatización</strong>
+          <span>Refuerza señales, ajusta y revisa tu progreso.</span>
+        </div>
+      </div>
+      <div class="semana-item">
+        <div class="s-num">6</div>
+        <div class="s-text">
+          <strong>Rutina estable</strong>
+          <span>Evalúa tu identidad y define los próximos 90 días.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA MID ═══════════ -->
+<section class="cta-mid" id="comprar">
+  <div class="cta-mid-inner fade-up">
+    <div class="section-label" style="color:rgba(255,255,255,0.7);">◦ ◦ ◦ &nbsp; Tu momento es ahora &nbsp; ◦ ◦ ◦</div>
+    <h2>Deja de prepararte para empezar.<br>Empieza.</h2>
+    <p>My Glow Up — el ebook práctico con 9 módulos, 2 bonos, plantillas y el plan de 6 semanas para transformar tus hábitos para siempre.</p>
+    <a href="#" class="btn-white">
+      Quiero mi Glow Up <span style="margin-left:0.25rem">✦</span>
+    </a>
+    <p style="margin-top:1.5rem; font-size:0.82rem; color:rgba(255,255,255,0.6);">Descarga digital · Acceso inmediato · Contenido imprimible incluido</p>
+  </div>
+</section>
+
+<!-- ═══════════ RESULTADOS ESPERADOS ═══════════ -->
+<section class="resultados">
+  <div class="resultados-inner">
+    <div class="resultados-header fade-up">
+      <div class="section-label">Semana a semana</div>
+      <h2>Tu transformación en 6 semanas</h2>
+      <p>Progreso real, medible y sostenible.</p>
+    </div>
+    <div class="resultados-grid fade-up">
+      <div class="resultado-card">
+        <div class="resultado-week">Semanas 1 y 2</div>
+        <h3>Claridad total</h3>
+        <p>Entiendes tu ciclo de abandono, tienes tu identidad definida y tu primer hábito funcionando con una señal clara.</p>
+      </div>
+      <div class="resultado-card">
+        <div class="resultado-week">Semanas 3 y 4</div>
+        <h3>Sistema activo</h3>
+        <p>Tienes una rutina básica, un plan para días difíciles y estás registrando tu consistencia semana a semana.</p>
+      </div>
+      <div class="resultado-card">
+        <div class="resultado-week">Semanas 5 y 6</div>
+        <h3>Hábitos automáticos</h3>
+        <p>Tus hábitos se ejecutan sin depender de la motivación. Tu entorno te ayuda. Tienes tu plan para los próximos 90 días.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CIERRE ═══════════ -->
+<section class="cierre">
+  <div class="cierre-inner fade-up">
+    <p class="cierre-quote">"No necesitas más motivación.<br>Necesitas <em>un sistema.</em>"</p>
+    <p>La versión de ti que cumple lo que se propone ya existe. Solo necesita el sistema correcto para aparecer todos los días, incluso cuando no tiene ganas.</p>
+    <a href="#comprar" class="btn-primary" style="font-size:1.05rem; padding:1.1rem 2.75rem;">
+      Empezar mi Glow Up ahora <span class="arrow">→</span>
+    </a>
+    <p class="cierre-nota">Tu vida cambia cuando cambian tus hábitos. Un módulo a la vez. Una semana a la vez.</p>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-brand">My Glow Up ✦</div>
+  <p>Ebook digital · Todos los derechos reservados</p>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Sticky CTA
+  const stickyCta = document.getElementById('stickyCta');
+  const heroCta = document.getElementById('heroCta');
+
+  const ctaObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0 });
+
+  ctaObserver.observe(heroCta);
+</script>
+</body>
+</html>
